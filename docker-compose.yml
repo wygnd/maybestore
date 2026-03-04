@@ -1,0 +1,9 @@
+services:
+
+  # Api gateway
+  gateway:
+    build:
+      context: ./backend/gateway/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"

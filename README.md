@@ -1,6 +1,6 @@
 # Интернет магазин
 
-Пет проект на основе интернет магазина
+Пет проект на основе интернет магазина.
 
 ## Архитектура проекта
 
@@ -8,6 +8,7 @@
 - Backend: `nest` `Микросервисы`
     - Users
     - Products
+        - Products indexes???
     - Orders
     - Warehouse
     - Payments `optional`
@@ -21,6 +22,11 @@
 ## Задачи
 
 - [ ] Микросервисы
+    -  [ ] Products
+    -  [ ] Users
+    -  [ ] Warehouse
+    -  [ ] Notifications
+    -  [ ] Payments
 - [ ] UI
 - [ ] Завернуть в Docker
 - [ ] Kubernetes
