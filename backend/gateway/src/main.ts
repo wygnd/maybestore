@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 import { buildFastifyAdapter } from './common/config/fastify/config';
 import { setupSwaggerConfig } from './common/config/swagger/config';
 import { setupValidationConfig } from './common/config/validation/config';
+import { compressionConfig } from './common/config/compression/config';
 
 async function bootstrap() {
   // Собираем инстанс приложения
@@ -20,13 +21,8 @@ async function bootstrap() {
   // Собираем документация
   setupSwaggerConfig(app);
 
-  // todo: cors
-
-  // todo: helmet
-
-  // todo: rate limit
-
-  // todo: compression
+  // Используем сжатие
+  await compressionConfig(app);
 
   // Валидация запросов
   app.useGlobalPipes(setupValidationConfig());

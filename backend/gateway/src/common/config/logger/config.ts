@@ -1,6 +1,6 @@
 import winston from 'winston';
 import { WinstonModule } from 'nest-winston';
-import { APP_LOG_DIR } from '../../../shared/constants/app/app.contstants';
+import { LOG_DIR } from '../../../shared/constants/app/app.contstants';
 import 'winston-daily-rotate-file';
 
 export const loggerConfig = () => {
@@ -16,7 +16,7 @@ export const loggerConfig = () => {
 
   const fileTransport = new winston.transports.DailyRotateFile({
     level,
-    dirname: APP_LOG_DIR,
+    dirname: LOG_DIR,
     filename: 'app-%DATE%.log',
     maxFiles: '15d',
     datePattern: 'YYYY-MM-DD',

@@ -1,7 +1,7 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { INestApplication } from '@nestjs/common';
+import { NestFastifyApplication } from '@nestjs/platform-fastify';
 
-export const setupSwaggerConfig = (app: INestApplication) => {
+export const setupSwaggerConfig = (app: NestFastifyApplication) => {
   const config = new DocumentBuilder()
     .setTitle('process.env.APP_TITLE')
     .setVersion('1.0')
