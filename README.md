@@ -19,12 +19,15 @@
 Изучить микросервисную архитектуру, DDD паттерн.
 Научиться управлять набором контейнеров
 
-## Задачи
+## Todo
 
+- General
+  -  [ ] CQRS
+  -  [ ] RMQ
 - [ ] Gateway
-  - [x] Dockerfile
-  - [x] Swagger
-  - [ ] Logger
+    - [x] Dockerfile
+    - [x] Swagger
+    - [ ] Logger
 - [ ] Микросервисы
     -  [ ] Products
     -  [ ] Users
