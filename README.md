@@ -21,6 +21,10 @@
 
 ## Задачи
 
+- [ ] Gateway
+  - [x] Dockerfile
+  - [x] Swagger
+  - [ ] Logger
 - [ ] Микросервисы
     -  [ ] Products
     -  [ ] Users
