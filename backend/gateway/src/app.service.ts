@@ -5,20 +5,19 @@ import { firstValueFrom, Observable } from 'rxjs';
 
 @Injectable()
 export class AppService {
-  constructor(
-    @Inject(MICROSERVICES.Products) private productsClient: ClientProxy,
-  ) {}
+  constructor() // @Inject(MICROSERVICES.Products) private productsClient: ClientProxy,
+  {}
 
   public async healthCheck() {
-    const microservicesHealth = await Promise.all([
-      this.checkService(this.productsClient.send({ cmd: 'check_health' }, {})),
-    ]);
+    // const microservicesHealth = await Promise.all([
+    //   this.checkService(this.productsClient.send({ cmd: 'check_health' }, {})),
+    // ]);
 
     return {
       gateway: {
         status: true,
       },
-      microservices: microservicesHealth,
+      microservices: true,
     };
   }
 

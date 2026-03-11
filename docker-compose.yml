@@ -4,8 +4,9 @@ services:
     build:
       context: ./backend/gateway/
       dockerfile: Dockerfile
+    container_name: maybestore-gateway
     env_file:
-      - ./backend/gateway/.env
+      - backend/.env
     ports:
       - "3000:3000"
     depends_on:
@@ -14,19 +15,34 @@ services:
       - public
       - internal
 
-
   # Microservices
   # Products microservice
   products:
     build:
       context: ./backend/microservices/products
       dockerfile: Dockerfile
+    container_name: maybestore-products
     env_file:
       - ./backend/microservices/products/.env
     networks:
       - internal
 
 
+  # Other services
+  # Rabbit MQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: maybestore-rabbitmq
+#    ports:
+#      - "5672:5672"
+#      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/data
+    restart: always
+
 networks:
   public:
   internal:
+
+volumes:
+  rabbitmq_data:
