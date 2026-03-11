@@ -23,7 +23,7 @@
 
 - General
   -  [ ] CQRS
-  -  [ ] RMQ
+  -  [x] RMQ
 - [ ] Gateway
     - [x] Dockerfile
     - [x] Swagger
