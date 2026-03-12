@@ -4,6 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MICROSERVICES } from '../../constants/app/app.contstants';
 import { IS_PROD } from '../../constants/main';
 import { IEnvironmentOptions } from '../../interfaces/config/main';
+import { ProductsService } from './services/service';
+import { QUEUE_LIST } from '../constants/queue/main';
 
 @Module({
   imports: [
@@ -14,22 +16,23 @@ import { IEnvironmentOptions } from '../../interfaces/config/main';
         useFactory: (configService: ConfigService<IEnvironmentOptions>) => ({
           transport: Transport.RMQ,
           options: {
-            url: [configService.getOrThrow('RABBIT_MQ.URL', { infer: true })],
-            host: IS_PROD ? 'products' : 'localhost',
-            port: parseInt(
-              configService.getOrThrow('MICROSERVICES.PRODUCTS.PORT', {
+            urls: [
+              configService.getOrThrow<string>('RABBIT_MQ.URL', {
                 infer: true,
               }),
-            ),
+            ],
             queueOptions: {
               durable: true,
             },
-            noAck: false, // Ручное подтверждение сообщений
+            queue: QUEUE_LIST.PRODUCTS,
+            prefetchCount: 1, // обработка 1 сообщения за раз
           },
         }),
         inject: [ConfigService],
       },
     ]),
   ],
+  providers: [ProductsService],
+  exports: [ProductsService],
 })
 export class MicroserviceProductsModule {}

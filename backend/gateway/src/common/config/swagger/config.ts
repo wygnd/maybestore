@@ -3,7 +3,7 @@ import { NestFastifyApplication } from '@nestjs/platform-fastify';
 
 export const setupSwaggerConfig = (app: NestFastifyApplication) => {
   const config = new DocumentBuilder()
-    .setTitle('process.env.APP_TITLE')
+    .setTitle(process.env.APP_TITLE ?? 'Gateway')
     .setVersion('1.0')
     .build();
 

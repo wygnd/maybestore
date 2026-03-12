@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { NestFastifyApplication } from '@nestjs/platform-fastify';
-import { AppModule } from './app.module';
+import { AppModule } from './app/app.module';
 import { buildFastifyAdapter } from './common/config/fastify/config';
 import { setupSwaggerConfig } from './common/config/swagger/config';
 import { setupValidationConfig } from './common/config/validation/config';
